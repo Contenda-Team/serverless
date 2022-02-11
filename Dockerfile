@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_17.x | bash -
 RUN apt-get install -y \
     groff \
     nodejs \
@@ -25,7 +25,7 @@ RUN npm install -g \
     serverless@${SERVERLESS_VERSION}
 
 ARG YARN_VERSION
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version ${YARN_VERSION}
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- -- --version ${YARN_VERSION}
 
 RUN echo "alias ll='ls -alFh --color=auto'" >> /root/.bashrc
 RUN echo "alias l='ls -alFh --color=auto'" >> /root/.bashrc
